@@ -103,57 +103,6 @@ We evaluated three hyperparameter configurations to optimize performance:
 
 ---
 
-## 📊 Evaluation Metrics
-
-Since this is a classification task, we use standard classification metrics:
-
-| Metric | Description |
-|--------|-------------|
-| **Accuracy** | Overall correct predictions |
-| **Precision** | True positives / (True positives + False positives) |
-| **Recall** | True positives / (True positives + False negatives) |
-| **F1 Score** | Harmonic mean of precision and recall |
-
----
-
-## 📈 Results Summary
-
-### Baseline vs Fine-Tuned (Test Set)
-
-| Metric | Baseline | Fine-Tuned | Improvement |
-|--------|----------|------------|-------------|
-| **Accuracy** | ~0.33 | ~0.85 | **+0.52** |
-| **F1 (Weighted)** | ~0.25 | ~0.84 | **+0.59** |
-| **F1 (Bearish)** | ~0.20 | ~0.82 | **+0.62** |
-| **F1 (Bullish)** | ~0.22 | ~0.80 | **+0.58** |
-| **F1 (Neutral)** | ~0.30 | ~0.88 | **+0.58** |
-
-> *Note: Actual results may vary based on training run.*
-
-The fine-tuned model shows **substantial improvement** across all metrics, demonstrating effective domain adaptation.
-
----
-
-## 🔍 Error Analysis
-
-Qualitative analysis of misclassified examples revealed common challenges:
-
-| Error Pattern | Description |
-|---------------|-------------|
-| **Neutral ↔ Bearish** | Objective analyst statements misclassified |
-| **Subtle Indicators** | "cuts to" vs "upgrades to" distinctions |
-| **Multi-Ticker Tweets** | Multiple stocks with different sentiments |
-| **Low Confidence** | Errors concentrated in <60% confidence predictions |
-
-### Suggested Improvements
-
-1. **Data Augmentation** — Add more ambiguous financial examples
-2. **Two-Stage Fine-Tuning** — General financial → Twitter-specific
-3. **Ensemble Approach** — Combine DistilBERT + FinBERT
-4. **Confidence Thresholding** — Flag uncertain predictions for review
-
----
-
 ## 🚀 Inference & Deployment
 
 The project includes:
